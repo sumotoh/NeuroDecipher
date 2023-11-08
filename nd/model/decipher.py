@@ -39,7 +39,8 @@ class DecipherModel(nn.Module):
         inp_enc = self.char_emb(id_seqs, self.lost_lang)  # bs x L x d
         # inp_enc = self.drop(inp_enc)
         bs = inp_enc.shape[0]
-        inp_packed = nn.utils.rnn.pack_padded_sequence(self.drop(inp_enc), lengths, batch_first=True)
+        # inp_packed = nn.utils.rnn.pack_padded_sequence(self.drop(inp_enc), lengths, batch_first=True)
+        inp_packed = nn.utils.rnn.pack_padded_sequence(self.drop(inp_enc), lengths.cpu(), batch_first=True) # sumoto すもと
         h = get_zeros(2 * self.num_layers, bs, self.hidden_size)  # NOTE bidirectional, therefore 2
         c = get_zeros(2 * self.num_layers, bs, self.hidden_size)
         h_s_packed, encoding = self.encoder(inp_packed, (h, c))
