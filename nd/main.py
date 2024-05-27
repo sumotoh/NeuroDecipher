@@ -10,7 +10,8 @@ from pprint import pformat
 import numpy as np
 import torch
 
-# sumoto
+# sumotoが削除
+# 下のコードを実行するとGPUで動作
 # torch.set_default_tensor_type(torch.cuda.FloatTensor)
 
 from arglib import parser

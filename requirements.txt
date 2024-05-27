@@ -8,4 +8,4 @@ treelib
 enlighten
 pytrie
 colorlog
-numpy
+numpy==1.23.5
